@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Http\Request;
-
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function profile($id)
+    {
+        $user = User::findorFail($id);
+        return view('profile', compact('user'));
     }
 
 }

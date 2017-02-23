@@ -19,6 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('profile/{id}', 'HomeController@profile')->name('profile');
+
+Route::resource('posts','PostsController');
+
+
 Route::get('/about', function (){
     return view('pages.about');
 })->name('about');
