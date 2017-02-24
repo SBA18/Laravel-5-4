@@ -23,7 +23,7 @@ class PostsController extends Controller
     public function index()
     {
         //Show all post
-        $posts = Post::get();
+        $posts = Post::OrderDateDesc()->get();
         return view('posts.index', compact('posts'));
     }
 
@@ -72,7 +72,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findorFail($id);
+        return view('posts.show', compact('post'));
     }
 
     /**

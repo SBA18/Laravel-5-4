@@ -11,7 +11,7 @@
                         <div class="row">
                             @foreach($posts as $post)
                             <div class="col-md-10">
-                                <h3>{{ $post->title }}</h3>
+                                <h3><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
                                 <p><em>{{ $post->created_at->diffForHumans() }} -- by : ????????</em></p>
 
                                 <p>{{ $post->body }}</p>
