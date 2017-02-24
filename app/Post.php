@@ -13,6 +13,10 @@ class Post extends Model
      * @param $query
      * @return mixed
      */
+
+    protected $fillable = ['title', 'body'];
+
+
     public function scopeOrderDateDesc($query){
         return $query->orderBy('created_at', 'desc');
     }

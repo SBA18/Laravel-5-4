@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Controllers\Auth;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::OrderDateDesc()->get()->where('user_id', '1');
+        $posts = Post::OrderDateDesc()->get()->where('user_id', '2');
         //dd($posts); die();
         return view('home', compact('posts'));
     }

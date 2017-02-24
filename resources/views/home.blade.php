@@ -11,17 +11,21 @@
                     <div class="row">
                         <div class="col-md-10">
                             <h3>My posts here !!!</h3>
-                            @foreach($posts as $post)
-                                <div class="col-md-10">
-                                    <h3><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
-                                    <p><em>{{ $post->created_at->diffForHumans() }} -- by : ????????</em></p>
-                                    <p>{{ $post->body }}</p>
-                                    <hr/>
-                                    <p><a href="{{ route('posts.edit', $post) }}">Edit</a> | <a href="{{ route('posts.destroy', $post) }}">Delete</a></p>
-                                    <hr/>
-                                    <p><a href="#">Like()</a> | <a href="#">dislike()</a> | <a href="#">comment() see more...</a></p>
-                                </div>
-                            @endforeach
+                                @foreach($posts as $post)
+                                    @if($post->user_id === auth::user()->id)
+                                        <div class="col-md-10">
+                                            <h3><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
+                                            <p><em>{{ $post->created_at->diffForHumans() }} -- by : ????????</em></p>
+                                            <p>{{ $post->body }}</p>
+                                            <hr/>
+                                            <p><a href="#">Like()</a> | <a href="#">dislike()</a> | <a href="#">comment() see more...</a></p>
+                                            @if($post->user_id === auth::user()->id)
+                                                <hr/>
+                                                <p><a href="{{ route('posts.edit', $post) }}">Edit</a> | <a href="{{ route('posts.destroy', $post) }}">Delete</a></p>
+                                            @endif
+                                        </div>
+                                    @endif
+                                @endforeach
                         </div>
                     </div>
                 </div>
